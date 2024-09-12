@@ -37,7 +37,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Copy reviews to file
-        run: }
+        run: |
           cat > reviews.json <<< '${{ steps.get_reviews.outputs.data }}'
       - name: BOZO for debug
         run: cat reviews.json
