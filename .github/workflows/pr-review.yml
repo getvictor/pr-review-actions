@@ -27,8 +27,7 @@ jobs:
   pr-review-check:
     runs-on: ubuntu-latest
     steps:
-      - run: "echo event: '${{ toJson(github.event) }}'"
-      # TODO: Find the required reviewer
+      # TODO: Find the required reviewer (not the author) for the PR
       - uses: octokit/request-action@v2.3.1
         id: get_reviews
         with:
