@@ -36,6 +36,10 @@ jobs:
           repo: ${{ github.event.repository.name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: |
-          echo '${{ steps.get_reviews.outputs.data }}' | \
+      - name: Copy reviews to file
+        run: }
+          cat > reviews.json <<< '${{ steps.get_reviews.outputs.data }}'
+      - name: Check if PR is approved
+        run: |
+          cat reviews.json | \
           jq --raw-output '.[] | select( .state | contains("APPROVED") ) | .user.login'
