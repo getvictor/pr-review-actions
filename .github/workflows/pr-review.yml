@@ -39,6 +39,8 @@ jobs:
       - name: Copy reviews to file
         run: }
           cat > reviews.json <<< '${{ steps.get_reviews.outputs.data }}'
+      - name: BOZO for debug
+        run: cat reviews.json
       - name: Check if PR is approved
         run: |
           cat reviews.json | \
