@@ -1,8 +1,11 @@
 name: PR review
 
 on:
-  workflow_dispatch: # Manual
+  workflow_dispatch: # Manual (for debug)
+  # Running on PR without any reviews should fail
   pull_request:
+  # Running on PR with the proper approving reviewer should pass
+  pull_request_review:
 
 defaults:
   run:
@@ -16,7 +19,7 @@ env:
   PR_NUMBER: ${{ github.event.number }}
 
 jobs:
-  pr-review:
+  pr-review-check:
     runs-on: ubuntu-latest
     steps:
       # TODO: Find the required reviewer
@@ -29,3 +32,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: "echo reviews: '${{ steps.get_reviews.outputs.data }}'"
+      # TODO: Check if the required reviewer has approved the PR
