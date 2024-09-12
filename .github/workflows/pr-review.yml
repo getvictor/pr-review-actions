@@ -21,7 +21,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  PR_NUMBER: ${{ github.event.number }} || ${{ github.event.pull_request.number }}
+  PR_NUMBER: ${{ github.event.number || github.event.pull_request.number }}
 
 jobs:
   pr-review-check:
