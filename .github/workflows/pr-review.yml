@@ -36,5 +36,6 @@ jobs:
           repo: ${{ github.event.repository.name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: "echo reviews: '${{ steps.get_reviews.outputs.data }}'"
-      # TODO: Check if the required reviewer has approved the PR
+      - run: |
+          echo '${{ steps.get_reviews.outputs.data }}' | \
+          jq --raw-output '.[] | select( .state | contains("APPROVED") ) | .user.login'
