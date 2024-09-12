@@ -15,6 +15,11 @@ permissions:
   # read contents of repo; all other permissions default to `none`
   contents: read
 
+# This allows a subsequently queued workflow run to interrupt/cancel previous runs
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id}}
+  cancel-in-progress: true
+
 env:
   PR_NUMBER: ${{ github.event.number }}
 
