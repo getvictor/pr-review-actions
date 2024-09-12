@@ -38,7 +38,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Copy reviews to file
         run: |
-          cat > reviews.json <<< '${{ steps.get_reviews.outputs.data }}'
+          cat > reviews.json <<EOF
+          ${{ steps.get_reviews.outputs.data }}
+          EOF
       - name: BOZO for debug
         run: cat reviews.json
       - name: Check if PR is approved
