@@ -1,0 +1,31 @@
+name: PR review
+
+on:
+  workflow_dispatch: # Manual
+  pull_request:
+
+defaults:
+  run:
+    shell: bash
+
+permissions:
+  # read contents of repo; all other permissions default to `none`
+  contents: read
+
+env:
+  PR_NUMBER: ${{ github.event.number }}
+
+jobs:
+  pr-review:
+    runs-on: ubuntu-latest
+    steps:
+      # TODO: Find the required reviewer
+      - uses: octokit/request-action@v2.3.1
+        id: get_reviews
+        with:
+          route: GET /repos/{owner}/{repo}/pulls/${{ env.PR_NUMBER }}/reviews
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.event.repository.name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: "echo reviews: '${{ steps.get_reviews.outputs.data }}'"
