@@ -4,8 +4,6 @@ on:
   workflow_dispatch: # Manual (for debug)
   # Running on PR without any reviews should fail
   pull_request:
-  # Running on PR with the proper approving reviewer should pass
-  pull_request_review:
 
 defaults:
   run:
