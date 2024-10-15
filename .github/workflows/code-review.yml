@@ -23,6 +23,7 @@ env:
 
 jobs:
   code-review:
+    name: Code review
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
