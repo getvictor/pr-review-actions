@@ -31,6 +31,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Code review action
         id: test-action
-        uses: getvictor/code-review@f1108c2b30c0b2cb3fa13177a37cdced3713ae91
+        uses: getvictor/code-review@bbb4384ba3a368a968845b57f78ca2b37950b4de
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
