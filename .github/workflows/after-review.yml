@@ -1,0 +1,22 @@
+name: Rerun checks after review
+
+on:
+  pull_request_review:
+    types:
+      - submitted
+      - dismissed
+
+permissions:
+  pull-requests: write
+
+jobs:
+  rerun_checks:
+    name: Rerun specified checks
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rerun Checks
+        uses: shqear93/rerun-checks@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          check-names: 'code-review'
