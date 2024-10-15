@@ -11,8 +11,9 @@ permissions:
 
 jobs:
   rerun_checks:
-    runs-on: ubuntu-latest
     name: Rerun specified checks
+    permissions: write-all
+    runs-on: ubuntu-latest
     steps:
       - name: Rerun Checks
         uses: shqear93/rerun-checks@v3
