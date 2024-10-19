@@ -1,0 +1,17 @@
+name: Code review
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  code-review:
+    runs-on: ubuntu-latest
+    name: Code review
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Code review action
+        uses: getvictor/code-review-video@main
+        with:
+            github-token: ${{ secrets.GITHUB_TOKEN }}
