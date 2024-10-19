@@ -9,7 +9,8 @@ on:
 jobs:
   rerun_checks:
     name: Rerun specified checks
-    permissions: write-all
+    permissions:
+      actions: write
     runs-on: ubuntu-latest
     steps:
       - name: Rerun Checks
