@@ -6,9 +6,6 @@ on:
       - submitted
       - dismissed
 
-permissions:
-  pull-requests: write
-
 jobs:
   rerun_checks:
     name: Rerun specified checks
