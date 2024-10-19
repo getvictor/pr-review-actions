@@ -16,4 +16,4 @@ jobs:
         uses: shqear93/rerun-checks@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          check-names: 'code-review'
+          check-names: 'Code review'
